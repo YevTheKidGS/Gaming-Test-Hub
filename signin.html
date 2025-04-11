@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Test Hub - Sign In</title>
+    <style>
+        body {
+            background-color: #1a2525;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #0f1a1a;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        nav {
+            margin: 15px 0;
+        }
+        nav a {
+            color: #90ee90;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .sign-in {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .sign-in img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #90ee90;
+        }
+        .sign-in a {
+            color: #90ee90;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+        .sign-in a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            flex: 1;
+            padding-bottom: 120px;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #90ee90;
+        }
+        .auth-container {
+            background-color: #2e3b3b;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #90ee90;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #0f1a1a;
+            color: #90ee90;
+            border: 2px solid #90ee90;
+            border-bottom: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .tab.active {
+            background-color: #90ee90;
+            color: #0f1a1a;
+        }
+        .tab:hover {
+            background-color: #70cc70;
+        }
+        .form-container {
+            display: none;
+        }
+        .form-container.active {
+            display: block;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-size: 1.1em;
+            color: #90ee90;
+        }
+        input {
+            padding: 10px;
+            border: 2px solid #90ee90;
+            border-radius: 5px;
+            background-color: #0f1a1a;
+            color: #ffffff;
+            font-size: 1em;
+        }
+        button {
+            padding: 10px;
+            background-color: #90ee90;
+            color: #0f1a1a;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:disabled {
+            background-color: #555555;
+            cursor: not-allowed;
+        }
+        button:not(:disabled):hover {
+            background-color: #70cc70;
+        }
+        .captcha {
+            margin: 10px 0;
+        }
+        .captcha label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0f1a1a;
+            width: 100%;
+        }
+        .social-icons {
+            margin-top: 10px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            border: 2px solid #90ee90;
+            background-color: #ffffff;
+            transition: transform 0.3s;
+        }
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gaming Test Hub</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="recommendations.html">Recommendations</a>
+            <a href="about.html">About</a>
+        </nav>
+        <div class="sign-in">
+            <img src="placeholderimage.jpg" alt="Profile Picture">
+            <a href="signin.html">Sign In</a>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>Sign In or Sign Up</h2>
+        <div class="auth-container">
+            <div class="tabs">
+                <div class="tab active" onclick="showForm('signin')">Sign In</div>
+                <div class="tab" onclick="showForm('signup')">Sign Up</div>
+            </div>
+            <div id="signin" class="form-container active">
+                <form>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="captcha">
+                        <label for="captchaAnswer" id="captchaQuestion"></label>
+                        <input type="number" id="captchaAnswer" name="captchaAnswer" required placeholder="Enter the answer">
+                    </div>
+                    <button type="submit" id="signInButton" disabled>Sign In</button>
+                </form>
+            </div>
+            <div id="signup" class="form-container">
+                <form>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="signup-email">Email:</label>
+                    <input type="email" id="signup-email" name="email" required>
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" name="password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Gaming Test Hub | Built for learning HTML</p>
+        <p>Contact Us</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com" target="_blank">
+                <img src="linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://discord.com" target="_blank">
+                <img src="discord.jpg" alt="Discord">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function showForm(formId) {
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(formId).classList.add('active');
+            document.querySelector(`.tab[onclick="showForm('${formId}')"]`).classList.add('active');
+            if (formId === 'signin') {
+                generateCaptcha();
+            }
+        }
+
+        // CAPTCHA functionality
+        let correctAnswer;
+
+        function generateCaptcha() {
+            const num1 = Math.floor(Math.random() * 10); // Random number 0-9
+            const num2 = Math.floor(Math.random() * 10); // Random number 0-9
+            correctAnswer = num1 + num2;
+            document.getElementById('captchaQuestion').textContent = `What is ${num1} + ${num2}?`;
+            document.getElementById('captchaAnswer').value = ''; // Clear previous input
+            document.getElementById('signInButton').disabled = true; // Disable button
+        }
+
+        // Validate CAPTCHA answer
+        document.getElementById('captchaAnswer').addEventListener('input', function() {
+            const userAnswer = parseInt(this.value);
+            const signInButton = document.getElementById('signInButton');
+            if (userAnswer === correctAnswer) {
+                signInButton.disabled = false;
+            } else {
+                signInButton.disabled = true;
+            }
+        });
+
+        // Generate CAPTCHA when the page loads or the Sign In tab is selected
+        generateCaptcha();
+    </script>
+</body>
+</html>
